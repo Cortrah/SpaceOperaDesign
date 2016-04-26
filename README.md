@@ -135,7 +135,7 @@ prototype examples
 
 1. ancient robot releases
 2. pirates
-3. gravitional flux	or dark matter
+3. gravitational flux or dark matter
 
 ## Detail Views
 * Map
