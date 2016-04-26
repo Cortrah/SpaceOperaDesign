@@ -1,5 +1,11 @@
-# SpaceOperaDesign
-The design of space opera
+# Space Opera Design
+The design document for Space Opera, a Turnstyles Game.
 
 
-CC-BY-SA-4.0
+
+
+
+
+
+
+Licences: CC-BY-SA-4.0

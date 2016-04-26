@@ -1,0 +1,27 @@
+{
+  "name": "space_opera_design",
+  "version": "1.0.0",
+  "description": "Design docs for Space Opera, a turnstyles game",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cortrah/SpaceOperaDesign.git"
+  },
+  "keywords": [
+    "turn-based",
+    "play-by-mail",
+    "non-realtime",
+    "4x",
+    "game",
+    "design"
+  ],
+  "author": "Cortlandt Winters",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/Cortrah/SpaceOperaDesign/issues"
+  },
+  "homepage": "https://github.com/Cortrah/SpaceOperaDesign#readme"
+}
