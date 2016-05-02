@@ -18,16 +18,18 @@ with others, our schedules are fragmented. Even when we can do so with a group o
 as few as 4 or 5 folk, someone can't make it each time. This makes running a longer 
 continuing game even more problemmatic.
 
-That is the problem "Turnstyles" aims to solve.
+That is the problem "Turnstyles" aims to solve. That and the fact that even when you do
+find a good non-realitme game you could play with your friends, it tends to be for 
+windows only or iphone only or ... 
 
 So the core mechanic of turnstyles is to adopt many of the good turn based mechanics 
 of these games, while avoiding any realtime mechanics that will get in the way
 and to chunk turns into consistent managable time slices so that each player fills out 
 their turn on their own schedule. 
 
-To create non-realtime games that still have interesting mechanics and still enable 
-meaningful communication with your friends via roleplaying and storytelling over 
-a long period of time.
+Turnstyles will focus on creating rich non-realtime games that still have interesting 
+mechanics and still enable meaningful communication with your friends via roleplaying 
+and storytelling over a long period of time.
  
 Whether it is one turn that takes 15 minutes a day, an hour or two a week, or three 
 or four hours every month, the key is that the chunk sizes are consistent and manageable 
@@ -38,12 +40,14 @@ be playing in the back of your mind while going about your daily tasks. Thinking
 mysteries, thinking about your story, engaging in diplomacy with your friends and potential 
 enemies, filling out your turn and writing your story on your own schedule.
  
-The criteria of whether a turnstyles game good is not how much time you spend playing it, 
-but how much time you spend thinking about it while at work, in the shower, driving the 
+The criteria of whether a turnstyles game is good is not how much time you spend playing it, 
+but how much time you spend thinking about it while at work, in the shower and driving the 
 kids to soccer.
 
 A turnstyles game may have mechanics, but the mechanics should exist to create the reality 
-upon which one can tell a story through roleplay. 
+upon which one can tell a story through roleplay. You should be able to check in on the story
+on any phone or device, and when you have the time, compose your part of the story from 
+a computer or device with a decent keyboard.
 
 When you have to accomplish things via mechanics it makes it feel more like a real 
 accomplishment and grounds your story in a dramatic envelope of successes and failures.
