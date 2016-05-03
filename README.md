@@ -24,11 +24,11 @@ Game Design
 The game design is broken up into phases, a very minimal first phase and a more complete first prototype.
 
 We'll start with a single game with up to 8 players and 8 npc positions, plus two explicit gm positions. 
-Eventually games should be able to reach up to about 40 or 50 players in a single game, 
-but more than that might require players to keep track of too much even with a month long turn phase.                                                                                             
+Eventually games may be able to reach up to about 40 or 50 players in a single game, 
+but more than that would probably require players to keep track of too much even with a month long turn phase.  
 
 The Turnstyle is paralell, as opposed to sequential or realtime which are not long term goals the exception to this
-is that military and economic alliances can be negotiated in pseudo-realtime during the player's turn phase.
+is that military and economic alliances can be negotiated in pseudo-realtime during the player turn phase.
 
 The initial CommunalMode is freestyle as opposed to cooperative or competitive which are long term goals, 
 though my assumption is that the initial playtesters will be playing largely cooperatively which is my hope 
@@ -36,14 +36,16 @@ for the default style, freestyle allows conflict between players and the engine 
 just so that we can test out both cooperative and competitive styles as we wish. Cooperative and Competitive modes
 will probably pair with differnt plot elements that encourage the communal style of play that the players have chosen.
 
-There will be two initial map types, a stellar map type and a planetary map type.
+There will be two initial map types, a stellar map type and a planetary map type though the stellar map is of 
+a much higher priority. 
 
 ## Positions consist initially of
 1. a ruler 
 2. a species
 3. 3 other leaders
-4. some units (ships and robots)
-5. a faction
+4. some units (ruler, leaders, ships and robots are identical from a technical standpoint 
+where a ship has a hull, a robot has a chassi and a leader or ruler has a suit - each with slots for items)
+5. a faction (or independent)
 6. a map position
 7. a generated or drawn planetary map
 
@@ -52,10 +54,12 @@ There will be two initial map types, a stellar map type and a planetary map type
 	for now we'll call this governance_type 'feudal'
 
 ## Races 
-1. Humans
-2. Arachnids
-3. Robots
-4. Spores
+1. Terran
+2. Arachnidia
+3. Lupe
+4. Sporelon
+5. Aurelian
+6. Flux
 
     (there are also ancients and grey to start, but not as pcs)
 
@@ -90,24 +94,143 @@ Things that a player is trying to determine from the maps are
 4. Trade status and economy
 5. Regional Production Values
     * research
-    * money
+    * energy
     * materials
-    * population
-    * mana (for esp?)
-    * environment (habitability and terrain)
+6. environment (habitability and stellar or terrain modifiers)
 
 
 1. Stellar, one map that maxes out at 2560x1600
         A map like in stars, but with the points as locations in hexes
-        each point is a planet or asteroid or space station, etc that is controlled with the hex, 
+        each location is a planet or asteroid or space station, etc that is controlled with the hex, 
+        when a location is colonized, it produces energy, research or materials
         each position starts off with a home planet, points are seen at the start, 
         but planetary details can be seen after scouting. stellar environmental effects include 
         planet habitability and physics pockets which can change like in vernor vinge's books, 
         the map should have things like invading fleets, solar flare-ups, pirates, and mysteries
 
 2. Planetary, one per planet visited that maxes out initially at 760x480. 
-        A hex map like cruenti dei each hex is a region with locations in it 
+        A hex map like cruenti dei each hex is a region with locations in it         
 
+## Stellar HexMap Properties
+* Background
+* Position Labels (computed from positions homeRegionId)
+* Areas (such as dark matter, radiation or areas of control)
+* Height (in rows)
+* Width (in cols)
+* centerX
+* centerY
+* Regions
+
+## Stellar Hex Properties
+* Name (use stas! star names)
+* Environment Type
+* Locations (0-3 Planets(colonized and not),  Space Stations, Monoliths)
+(Moons, Asteroids, Debris, Plot Triggers)
+* Features (Ancient)
+* Controling Realm
+* Victory Point Value
+* Units
+* Energy 
+* Materials
+* Research
+* RegionsBorders(wormholes)
+
+
+## Detail Views
+* Stellar Maps
+* Transmissions
+* Positions 
+* Agents 
+* Planet Maps
+
+## Actions
+* Scout
+* Move 
+* Build
+* Upgrade
+* Colonize
+* Mine
+* Diplomacize
+* Research
+* Spy
+* Story
+* Investigate
+* Note
+* Conditional
+
+
+## Transmissions Actions
+
+* Send a Message    (continual)
+* Propose Trade     (continual)
+* Propose Alliance  (continual)
+* Broadcast Message
+* Research Item
+* Upgrade Unit
+
+## Region Actions (requires hex control)
+
+* Colonize
+* Terraform
+* Upgrade Economy
+* Upgrade Resource Mining
+* Upgrated Research Facilities
+
+## Unit Actions     Leader(suit) Robot(chassi) Ship(hull)
+
+* Scout - like movement but into unexplored terrain, typically much slower       
+* Move
+* Investigate
+* Mine
+* Diplomacize
+* Spy
+
+## Items and Upgrades     
+       
+Suits can allow a leader items like a research team, a minelayer, a misstle weapon, a beam weapon, a research team  
+Leaders essentially have their own small ships for free that can support a research team, 
+but generally not both. 
+
+Items can be things like bombs or scanners or research tools or any sort of mcguffin
+
+Chassis, the robot version of a suit
+
+Hulls, the ship version of a suit
+
+Unit Level Items - costs?
+* Research Gizmo +2 research
+* Diplomatic Pouch +2 diplomacy
+* Stealth Cloak +2 spycraft
+* Colony Pod - colonize one planet in a controled region
+* Mine Dispenser 50 - spreads defensive mines throughout a region
+* Energy Tap 20 - drains energy from nearby planet- drains energy from nearby planet
+* Bat Scanner - scans out one region 
+* Dolphin Scanner - scans out two regions, penetration scan out one
+* Eagle Scanner - scans out three regions, penetration scan out two
+* Nuclear Source +3 energy
+* Fusion Source +6 energy
+* Tacheon Source +9 energy
+* Nuclear Drive - scout 1 moves 2
+* Fusion Drive - scout 2 moves 4
+* Tacheon Drive - scout 3 moves 6
+* Slide Rule Targetron +1 to hit
+* TI-83 Targetron +2 to hit
+* HAL Targetron +3 to hit
+* Mole-Skin Shield  -1 to hit
+* Turtle-Shell Shield -2 to hit
+* Phase-Barier Shield -3 to hit
+* Strobiium Armor +1 hull
+* Kelarium Armor +2 hull
+* Neutronium Armor +3 hull
+* Phase Beam 1 damage at close range
+* Disruptor Beam 2 damage at close range
+* Anti-Matter Beam 3 damage at close range
+* Delta Torpedo 1 damage at long range
+* Jihad Missile 2 damage at long range
+* Armageddon Spear 3 damage at long range
+* Cherry Bomb +2 to destroy colonies
+* Neutron Bomb +4 to destroy colonies
+* Anti-Matter Bomb +6 to destroy colonies
 
 ## Plot Devices
 Plot devices should have some properties
@@ -137,77 +260,7 @@ prototype examples
 2. pirates
 3. gravitational flux or dark matter
 
-## Detail Views
-* Map
-* Leader (Leader Actions)
-* Realm (Realm Actions)
-* Army (Army Actions)
-* Diplomacy (Exchange, Relations, Thread, History)
-* Research
-* Mysteries
-* Rule
-* Item
-* Story at the Stellar Public and Private levels
-* Story at the Position Public and Private levels
-* Story at the Leader Public and Private levels
 
-# Actions
-
-## Realm Actions
-
-* Send a Message    (continual)
-* Propose Trade     (continual)
-* Propose Alliance  (continual)
-* Broadcast Message
-* Research Item
-* Upgrade Leader
-* Upgrade Robot
-* Upgrade Ship
-
-## Region Actions (requires hex control)
-
-* Colonize
-* Terraform
-* Upgrade Economy
-* Upgrade Resource Mining
-* Upgrated Research Facilities
-
-## Unit Actions     Leader(suit) Robot(chassi) Ship(hull)
-
-* Scout - like movement but into unexplored terrain, typically much slower       
-* Move
-* Investigate
-* Mine
-* Diplomacize
-* Spy
-       
-Suits can allow a leader items like a research team, a mining crew, a ranged weapon, a melle weapon, items  
-Leaders have their own small ships for free that can support a research team or mining crew, but generally not both.
-Items can be things like bombs or scanners or research tools or any sort of mcguffin
-
-Chassis the robot version of a suit
-
-Hulls the ship version of a suit
-
-
-Current Status
-===========
-
-Right now I'm working on 
-
-* move this design content into it's own folder
-* polishing the design of phase 1
-* a quick swipe at the design of phase 2 to know where I'm going
-* Login and hosting screens with authentication 
-* the ability to draw hex maps
-* a single stellar hex map
-* a single planetary hex map
-* ground troops and combat rules for human and arachnid forces
-* A fog of war view of the map using authorization
-
-Next up will be 
-
-* the view to read and navigate a story which is synchronized to a map
-* a plot device with mysteries placed on the map that triggers story events
-
-Licences: CC-BY-SA-4.0
+### Licences 
+Code: MIT
+Artwork and Design: CC-BY-SA-4.0
