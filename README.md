@@ -21,30 +21,31 @@ There is much more to be said and discussed about with turnstyles and I'll event
 Game Design
 ===========
 
-The game design is broken up into phases, a very minimal first phase and a more complete first prototype.
-
-We'll start with a single game with up to 8 players and 8 npc positions, plus two explicit gm positions. 
+We'll start with a single game of up to 6 players and 6 npc positions, plus two explicit gm positions. 
 Eventually games may be able to reach up to about 40 or 50 players in a single game, 
 but more than that would probably require players to keep track of too much even with a month long turn phase.  
 
-The Turnstyle is paralell, as opposed to sequential or realtime which are not long term goals the exception to this
-is that military and economic alliances can be negotiated in pseudo-realtime during the player turn phase.
+The Turnstyle is paralell, as opposed to sequential or realtime which are not long term goals. 
+The exception to this is that military and economic alliances can be negotiated in pseudo-realtime 
+during the player turn phase.
 
 The initial CommunalMode is freestyle as opposed to cooperative or competitive which are long term goals, 
-though my assumption is that the initial playtesters will be playing largely cooperatively which is my hope 
-for the default style, freestyle allows conflict between players and the engine should support that from the begining
-just so that we can test out both cooperative and competitive styles as we wish. Cooperative and Competitive modes
-will probably pair with differnt plot elements that encourage the communal style of play that the players have chosen.
+though my assumption is that the initial playtesters will be playing largely cooperatively against the npc positions
+which is my hope for the default style, freestyle allows conflict between players and the engine should support that 
+from the begining just so that we can test out both cooperative and competitive styles as we wish. Cooperative and 
+Competitive modes will probably pair with differnt plot device attributes that encourage the particular communal 
+style of play that the players have chosen.
 
 There will be two initial map types, a stellar map type and a planetary map type though the stellar map is of 
-a much higher priority. 
+a much higher priority. Planetary events and combat can be reported via text summaries at first.
 
 ## Positions consist initially of
 1. a ruler 
 2. a species
 3. 3 other leaders
-4. some units (ruler, leaders, ships and robots are identical from a technical standpoint 
-where a ship has a hull, a robot has a chassi and a leader or ruler has a suit - each with slots for items)
+4. some units 
+    (ruler, leaders, ships and robots are identical from a technical standpoint where a ship has a hull, 
+        a robot has a chassi and a leader or ruler has a suit - each with default properties and slots for items)
 5. a faction (or independent)
 6. a map position
 7. a generated or drawn planetary map
@@ -57,16 +58,16 @@ where a ship has a hull, a robot has a chassi and a leader or ruler has a suit -
 1. Terran
 2. Arachnidia
 3. Lupe
-4. Sporelon
+4. Fungoid
 5. Aurelian
-6. Flux
+6. Glorm
 
     (there are also ancients and grey to start, but not as pcs)
 
 ## Grey Factions 
 1. good
 2. bad
-3. ugly (or chaos/irony)
+3. ugly (chaos/irony)
 
 Grey factions are npc prompts that try to pit players against one another or just cause trouble and interesting story
 events in general.
@@ -74,21 +75,22 @@ events in general.
 ## Maps
 Maps are largely how someone determines how they are doing, 
 so how big they are and what they display at various zoom levels is key. 	
-Score can be based on story, plot points that translate to 'dramatic impact'. 
-(fate or karma?) mysteries solved via plot garden story arcs but there are things that a player will always 
+Score can be based on story, plot points that translate to 'dramatic impact' (fate or karma?) mysteries solved 
+via plot garden story arcs but there are things that a player will always 
 guage their progress on via the maps and so what is seen on the map is a sort of scoreboard
+also there are military victory badges and points for controlled regions.
 
 Things that a player is trying to determine from the maps are
 
 1. who controls where
 2. what you can see at locational privacy levels
-    * player positions in general with markers and labels for general direction, but no boundaries?
+    * player positions in general with markers and labels for general direction, but no boundaries at first?
     * environment and terrain
     * planetary and regional public (see all at once)
     * planetary and regional private (see one at a time)		
 3. what you can see at plot levels
     * markers, such as ?
-    * mysteries with descriptions (prelude, actions, midstatement, actions, conclusion)
+    * mysteries with descriptions (prelude, actions, choices, midstatement, actions, choices, conclusion)
     * story threads as it unfolds (based on transmission devices?)
     * hot spots, special important story threads
 4. Trade status and economy
@@ -103,8 +105,9 @@ Things that a player is trying to determine from the maps are
         A map like in stars, but with the points as locations in hexes
         each location is a planet or asteroid or space station, etc that is controlled with the hex, 
         when a location is colonized, it produces energy, research or materials
+        when a location is teraformed it produces another unit of energy research or materials 
         each position starts off with a home planet, points are seen at the start, 
-        but planetary details can be seen after scouting. stellar environmental effects include 
+        but planetary details can be seen after scouting and scanning. stellar environmental effects include 
         planet habitability and physics pockets which can change like in vernor vinge's books, 
         the map should have things like invading fleets, solar flare-ups, pirates, and mysteries
 
@@ -122,7 +125,7 @@ Things that a player is trying to determine from the maps are
 * Regions
 
 ## Stellar Hex Properties
-* Name (use stas! star names)
+* Name (use stars! star names)
 * Environment Type
 * Locations (0-3 Planets(colonized and not),  Space Stations, Monoliths)
 (Moons, Asteroids, Debris, Plot Triggers)
@@ -135,7 +138,6 @@ Things that a player is trying to determine from the maps are
 * Research
 * RegionsBorders(wormholes)
 
-
 ## Detail Views
 * Stellar Maps
 * Transmissions
@@ -143,47 +145,47 @@ Things that a player is trying to determine from the maps are
 * Agents 
 * Planet Maps
 
-## Actions
-* Scout
-* Move 
-* Build
-* Upgrade
-* Colonize
-* Mine
-* Diplomacize
-* Research
-* Spy
-* Story
-* Investigate
-* Note
-* Conditional
+## Transmission Actions
 
-
-## Transmissions Actions
-
-* Send a Message    (continual)
-* Propose Trade     (continual)
-* Propose Alliance  (continual)
 * Broadcast Message
+* Send a Personal Diplomatic Message (continual)
+* Propose/Accept/Cancel Trade        (continual) - requires adjacent regions, gives 1 resource of any type
+* Propose/Accept/Cancel Alliance     (continual) - doesn't require adjacency, allows movement without default combat
+* Share Research
+* Share Story or Plot Element 
+* Share Scanner Data
+
+{ if a player attacks another player or bombs their planet without canceling first they become a traitor 
+  a number of story specific repercussions can result. For now by default the victem just gets extra resources 
+  and the traitor gets negative victory points or a badge of shame} 
+
+## Position Actions
 * Research Item
 * Upgrade Unit
 
-## Region Actions (requires hex control)
+## Stellar Map Actions (requires hex control)
 
-* Colonize
-* Terraform
-* Upgrade Economy
-* Upgrade Resource Mining
-* Upgrated Research Facilities
-
-## Unit Actions     Leader(suit) Robot(chassi) Ship(hull)
-
-* Scout - like movement but into unexplored terrain, typically much slower       
 * Move
-* Investigate
-* Mine
-* Diplomacize
-* Spy
+* Scout - like movement but into unexplored terrain, typically half speed       
+* Colonize
+* Terraform - gives a second resource
+    * Energy
+    * Materials
+    * Research 
+
+## Unit Actions - Leader(suit) Robot(chassi) Ship(hull)
+
+* Move
+* Scout - like movement but into unexplored terrain, typically much slower       
+* Investigate +X Mv Pt Cost
+* Diplomacize +X Mv Pt Cost
+* Spy +X Mv Pt Cost
+* Attack +X Mv Pt Cost
+* Bomb +X Mv Pt Cost
+* Lay Minefield +X Mv Pt Cost
+* Note 
+* Conditional 
+* Set Stance (aggressive, defensive, ...)
 
 ## Items and Upgrades     
        
@@ -196,6 +198,9 @@ Items can be things like bombs or scanners or research tools or any sort of mcgu
 Chassis, the robot version of a suit
 
 Hulls, the ship version of a suit
+
+( Clicking on a hull, suit or chassi from the Unit Detail View sends you to the Position View 
+    with that Unit scrolled into the viewport )
 
 Unit Level Items - costs?
 * Research Gizmo +2 research
@@ -259,7 +264,6 @@ prototype examples
 1. ancient robot releases
 2. pirates
 3. gravitational flux or dark matter
-
 
 ### Licences 
 Code: MIT
