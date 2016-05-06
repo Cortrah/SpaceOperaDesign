@@ -2,28 +2,33 @@
   "1": {
     "id": "1",
     "name": "Space Opera",
+    "currentTurn":1,
+    "status": "PREPARING",
+    "nextTick": "2016-12-03T00:00:00.000Z",
     "positions": [
       {
         "id": "1",
         "name": "Hyperion Flow",
         "code": "hyp",
-        "userId":"2",
         "color": "11223344",
         "firstTurn":1,
         "lastTurn":1,
         "isSecret": false,
-        "regions":["1","2"],
-        "homeRegionId":["1"],
-        "score":0,
-        "tradeValue":5,
-        "tradePartners":[],
-        "allies":[],
-        "money":100,
+        "energy":100,
         "materials":100,
         "research":100,
-        "moneyIncome":10,
+        "energyIncome":10,
         "materialIncome":10,
         "researchIncome":10,
+        "speciesId":"1",
+        "factionId":"0",
+        "gameId":"1",
+        "userId":"2",
+        "turnId":"1",
+        "homeRegionId":["1"],
+        "regions":["1","2"],
+        "tradePartners":[],
+        "allies":[],
         "units":[],
         "items":[]
       },
@@ -31,24 +36,27 @@
         "id": "2",
         "name": "AstroDog Pack",
         "code": "hyp",
-        "userId":"3",
         "color": "44332211",
         "firstTurn":1,
         "lastTurn":1,
         "isSecret": false,
-        "regions":["3","4"],
-        "homeRegionId":["3"],
-        "score":0,
-        "tradeValue":5,
-        "tradePartners":[],
-        "allies":[],
-        "money":100,
+        "energy":100,
         "materials":100,
         "research":100,
-        "moneyIncome":10,
+        "energyIncome":10,
         "materialIncome":10,
         "researchIncome":10,
-        "units":[]
+        "speciesId":"1",
+        "factionId":"0",
+        "gameId":"1",
+        "userId":"3",
+        "turnId":"1",
+        "homeRegionId":["3"],
+        "regions":["3","4"],
+        "tradePartners":[],
+        "allies":[],
+        "units":[],
+        "items":[]
       }
     ],
     "maps": [
@@ -61,6 +69,7 @@
         "centerX":1,
         "centerY":1,
         "bg": "galaxy.png",
+        "gameId":"1",
         "regions": [
           {
             "id": "1",
@@ -68,12 +77,20 @@
             "code": "sys",
             "row": 1,
             "col": 1,
-            "money": 1,
+            "energy": 1,
             "materials": 1,
             "research": 1,
+            "mapId":1,
             "environmentTypeId": 1,
+            "inhabitingSpeciesId": 1,
+            "controllingPositionId": 1,
+            "facing":"1",
+            "adjacencies":["1","2","3","4","5","6"],
+            "units":[],
+            "features":[],
+            "locations":[],
             "regionsBorders":["1","2"],
-            "isSecret": false
+            "isSecret": false,
           },
           {
             "id": "2",
@@ -81,10 +98,18 @@
             "code": "spk",
             "row": 1,
             "col": 2,
-            "money": 1,
+            "energy": 1,
             "materials": 1,
             "research": 1,
+            "mapId":1,
             "environmentTypeId": 1,
+            "inhabitingSpeciesId": 1,
+            "controllingPositionId": 1,
+            "facing":"1",
+            "adjacencies":["1","2","3","4","5","6"],
+            "units":[],
+            "features":[],
+            "locations":[],
             "regionsBorders":["1","3"],
             "isSecret": false
           },
@@ -94,11 +119,19 @@
             "code": "bub",
             "row": 2,
             "col": 1,
-            "money": 1,
+            "energy": 1,
             "materials": 1,
             "research": 1,
+            "mapId":1,
             "environmentTypeId": 1,
-            "borders":["2","4"],
+            "inhabitingSpeciesId": 1,
+            "controllingPositionId": 1,
+            "facing":"1",
+            "adjacencies":["1","2","3","4","5","6"],
+            "units":[],
+            "features":[],
+            "locations":[],
+            "regionsBorders":["2","4"],
             "isSecret": false
           },
           {
@@ -107,15 +140,37 @@
             "code": "fby",
             "row": 2,
             "col": 2,
-            "money": 1,
+            "energy": 1,
             "materials": 1,
             "research": 1,
+            "mapId":1,
             "environmentTypeId": 1,
+            "inhabitingSpeciesId": 1,
+            "controllingPositionId": 1,
+            "facing":"1",
+            "adjacencies":["1","2","3","4","5","6"],
+            "units":[],
+            "features":[],
+            "locations":[],
             "regionsBorders":["3","4"],
             "isSecret": false
           }
         ],
-        "areas":[],
+        "areas":[
+          {
+            "id": "1",
+            "name": "Lake Ochachbie",
+            "code": "Lk O",
+            "description": "A lake",
+            "label_row": "1",
+            "label_col": "1",
+            "stroke": "#336699",
+            "fill": "water_tile",
+            "regions": [
+              "1"
+            ]
+          }
+        ],
         "regionsBorders":[
           {
             "id":"1",
@@ -176,6 +231,20 @@
             "code":"f",
             "description":"Forested terrain with +3 range defense, +1 melle defense",
             "effect":"a function that takes a movement type and a cost and returns a new cost"
+          },
+          {
+            "id":"3",
+            "name":"water",
+            "code":"w",
+            "description":"A lake or sea region, naval and air movement only",
+            "effect":"a function that takes a movement type and a cost and returns a new cost"
+          },
+          {
+            "id":"4",
+            "name":"hills",
+            "code":"h",
+            "description":"Hilly terrain with +2 range defense and +2 melle defense",
+            "effect":"a function that takes a movement type and a cost and returns a new cost"
           }
         ]
       }
@@ -187,15 +256,13 @@
         "number": 1,
         "introduction": "Your people are ready to explore the universe, good luck",
         "results":"",
+        "gameId":"1",
         "positionActions":[
         ],
         "unitActions":[
         ]
       }
     ],
-    "currentTurn":1,
-    "status": "PREPARING",
-    "nextTick": "2016-12-03T00:00:00.000Z",
     "users": [
       {
         "id":"1",

@@ -1,13 +1,42 @@
 Game
 	id:string
 	name:string
-	next_tick:datetime
 	current_turn:integer
 	status:string
-
+	next_tick:datetime
+	has_many :Positions
 	has_many :Maps
 	has_many :Turns
-	has_many :Positions
+
+Position
+ 	id:string
+	name:string
+	code:string
+	color:integer
+	first_turn:integer
+	last_turn:integer
+	is_secret:boolean
+	energy:integer
+	materials:integer
+	research:integer
+	energy_income:integer
+	material_income:integer
+	research_income:integer
+	game_id:integer
+	user_id:integer
+	species_id:integer
+	faction_id:integer
+	home_region_id:integer
+	has_many :Regions
+	has_many :TradePartners, :class_name => "Position"
+	has_many :Allies, :class_name => "Position"
+	has_many :Units
+	has_many :Items
+	belongs_to :Species
+	belongs_to :Faction
+	belongs_to :Game
+	belongs_to :User
+	belongs_to :Turn
 
 Map
 	id:string
@@ -19,7 +48,6 @@ Map
 	center_y:integer
 	bg:string
 	game_id:integer
-
 	has_many :Regions
 	has_many :Areas
 	has_many :RegionsBorders
@@ -34,72 +62,47 @@ Turn
 	introduction:text
 	results:text
 	game_id:integer
-
 	has_many :PositionActions
 	has_many :UnitActions
 	belongs_to :Game
 
-Position
- 	id:string
-	name:string
-	code:string
-	color:integer
-	energy:integer
-	materials:integer
-	research:integer
-	money_income:integer
-	materials_income:integer
-	research_income:integer
-	first_turn:integer
-	last_turn:integer
-	current_turn_id:integer
-	is_secret:boolean
-	game_id:integer
-	user_id:integer
-	species_id:integer
-	faction_id:integer
-
-	has_many :Regions
-	has_many :TradePartners, :class_name => "Position"
-	has_many :Allies, :class_name => "Position"
-	has_many :Units
-	has_many :Items
-	belongs_to :Species
-	belongs_to :Faction
-	belongs_to :Game
-	belongs_to :User
-	belongs_to :Turn
-
 Region
 	id:string
 	name:string
-	code:string row:integer
+	code:string
+	row:integer
 	col:integer
-	environment_type_id:integer
-	controling_position_id:integer
-	inhabiting_species_id:integer
-	map_id:integer
 	energy:integer
-	materials:integer
-	research:integer
+    materials:integer
+    research:integer
 	is_secret:boolean
+	map_id:integer
+	facing_id:integer
+	environment_type_id:integer
+	inhabiting_species_id:integer
+	controlling_position_id:integer
 
 	has_one :EnvironmentType
+	has_one :Facing :class_name => "Adjacency"
+	belongs_to :Position
+	belongs_to :Map
+
+	has_many :Units
 	has_many :Features
 	has_many :Locations
-	belongs_to :Map
-	belongs_to :Position
-	has_one :Facing
 	has_many :Adjacencies
 	has_many :RegionsBorders
-	has_many :Units
 
-EnvironmentType
+Area
 	id:string
 	name:string
 	code:string
 	description:text
-	effect:text
+	label_row:integer
+	label_col:integer
+	stroke:string
+	fill:string
+     has_many :Regions
 
 RegionsBorder
 	id:string
@@ -120,6 +123,18 @@ BorderType
 	code:string
 	description:text
 	is_directional:boolean
+
+EnvironmentType
+    id:string
+    name:string
+    code:string
+    description:text
+    effect:text
+
+
+
+
+
 
 Species
 	id:string
@@ -148,7 +163,6 @@ Unit
 	code:string
 	description:text
 	effect:text
-
     has_many :Items
 
 PositionAction
@@ -177,17 +191,6 @@ Cost
 	materials:integer
 	research:integer
 	item_id:integer
-
-Area
-	id:string
-	name:string
-	code:string
-	description:text
-	label_row:integer
-	label_col:integer
-	stroke:string
-	fill:string
-     has_many :Regions
 
 Feature
 	id:string
