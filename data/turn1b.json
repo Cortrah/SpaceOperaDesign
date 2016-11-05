@@ -90,7 +90,7 @@
             "features":[],
             "locations":[],
             "regionsBorders":["1","2"],
-            "isSecret": false,
+            "isSecret": false
           },
           {
             "id": "2",
@@ -222,6 +222,8 @@
             "id":"1",
             "name":"clear",
             "code":"c",
+            "isTerran":true,
+            "isStellar":true,
             "description":"Basic flat terrain with no modifiers",
             "effect":"a function that just returns it's argument unchanged"
           },
@@ -229,6 +231,8 @@
             "id":"2",
             "name":"forest",
             "code":"f",
+            "isTerran":true,
+            "isStellar":false,
             "description":"Forested terrain with +3 range defense, +1 melle defense",
             "effect":"a function that takes a movement type and a cost and returns a new cost"
           },
@@ -236,6 +240,8 @@
             "id":"3",
             "name":"water",
             "code":"w",
+            "isTerran":true,
+            "isStellar":false,
             "description":"A lake or sea region, naval and air movement only",
             "effect":"a function that takes a movement type and a cost and returns a new cost"
           },
@@ -243,6 +249,8 @@
             "id":"4",
             "name":"hills",
             "code":"h",
+            "isTerran":true,
+            "isStellar":false,
             "description":"Hilly terrain with +2 range defense and +2 melle defense",
             "effect":"a function that takes a movement type and a cost and returns a new cost"
           }

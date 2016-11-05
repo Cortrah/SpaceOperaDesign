@@ -128,12 +128,10 @@ EnvironmentType
     id:string
     name:string
     code:string
+    is_terran:boolean
+    is_stellar:boolean
     description:text
     effect:text
-
-
-
-
 
 
 Species
